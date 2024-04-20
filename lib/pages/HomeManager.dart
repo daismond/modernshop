@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
 import "package:modernshop/pages/HomePage.dart";
+import "package:modernshop/pages/OrdersPage.dart";
+import "package:modernshop/pages/UserPage.dart";
 import "package:modernshop/scoped/Mains.dart";
 
 class HomeManager extends StatefulWidget {
@@ -17,51 +19,13 @@ class _HomeManagerState extends State<HomeManager> {
     double largeur = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Scaffold(
-        drawer: Drawer(),
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text(
-            "ModernShop",
-            style: Theme.of(context).textTheme.titleMedium,
-          ),
-          actions: [
-            Container(
-              margin: EdgeInsets.only(right: largeur / 100),
-              padding: EdgeInsets.symmetric(horizontal: hauteur / 150),
-              width: largeur / 7,
-              height: largeur / 11.5,
-              decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  borderRadius:
-                      BorderRadius.all(Radius.circular(largeur / 25))),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Icon(
-                    Icons.shopping_cart_outlined,
-                    size: largeur / 25,
-                    color: Theme.of(context).primaryColor,
-                  ),
-                  Text(
-                    "05",
-                    style: TextStyle(
-                        fontSize: largeur / 30,
-                        color: Theme.of(context).primaryColor),
-                  )
-                ],
-              ),
-            ),
-          ],
-        ),
         body: Stack(
           children: [
             curentpage == 1
                 ? HomePage(model: model)
                 : (curentpage == 2
                     ? HomePage(model: model)
-                    : (curentpage == 3
-                        ? HomePage(model: model)
-                        : HomePage(model: model))),
+                    : (curentpage == 3 ? OrdersPage() : UserPage())),
             Positioned(
                 bottom: hauteur / 50,
                 child: Center(
@@ -71,7 +35,8 @@ class _HomeManagerState extends State<HomeManager> {
                     height: hauteur / 15,
                     width: largeur * 2.88 / 3,
                     decoration: BoxDecoration(
-                        color: Colors.green,
+                        border: Border.all(color: Colors.grey),
+                        color: Colors.white,
                         borderRadius:
                             BorderRadius.all(Radius.circular(hauteur / 20))),
                     child: Row(
@@ -145,12 +110,15 @@ class _HomeManagerState extends State<HomeManager> {
                                     ? Theme.of(context).primaryColor
                                     : Colors.transparent),
                             child: Center(
-                              child: Icon(
-                                Icons.shopping_cart_outlined,
-                                color: curentpage == 3
-                                    ? Colors.white
-                                    : Colors.grey,
-                                size: hauteur / 35,
+                              child: Badge(
+                                label: Text("99"),
+                                child: Icon(
+                                  Icons.shopping_cart_outlined,
+                                  color: curentpage == 3
+                                      ? Colors.white
+                                      : Colors.grey,
+                                  size: hauteur / 35,
+                                ),
                               ),
                             ),
                           ),
