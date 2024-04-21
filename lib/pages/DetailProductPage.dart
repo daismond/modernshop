@@ -233,7 +233,7 @@ class _DetailProductPageState extends State<DetailProductPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Text(
-                            "Ajouter au panier",
+                            "Add to Cart",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,

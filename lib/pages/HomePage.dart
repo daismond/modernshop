@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     Icon(
                       Icons.shopping_cart_outlined,
-                      size: largeur / 25,
+                      size: largeur / 23,
                       color: Theme.of(context).primaryColor,
                     ),
                     Text(
@@ -471,13 +471,22 @@ class _HomePageState extends State<HomePage> {
                                   .toList(),
                             ]),
                       ),
-                model.getAllproduct
-                                .where((el) =>
-                                    el["category"] == categorieselectionnee)
+                (model.getAllproduct
+                                    .where((el) =>
+                                        el["category"] == categorieselectionnee)
+                                    .toList()
+                                    .length <
+                                1 &&
+                            categorieselectionnee != "all") ||
+                        model.getAllproduct
+                                .where((prod) => prod["title"]
+                                    .toString()
+                                    .toLowerCase()
+                                    .contains(
+                                        searchcontroler.text.toLowerCase()))
                                 .toList()
                                 .length <
-                            1 &&
-                        categorieselectionnee != "all"
+                            1
                     ? Center(
                         child: Column(
                         children: [
@@ -500,7 +509,11 @@ class _HomePageState extends State<HomePage> {
                           crossAxisCount: 2,
                           children: (searchcontroler.text != ""
                                   ? model.getAllproduct.where((prod) =>
-                                      prod["title"] == searchcontroler.text)
+                                      prod["title"]
+                                          .toString()
+                                          .toLowerCase()
+                                          .contains(searchcontroler.text
+                                              .toLowerCase()))
                                   : (categorieselectionnee == "all"
                                       ? model.getAllproduct
                                       : model.getAllproduct.where((el) =>
