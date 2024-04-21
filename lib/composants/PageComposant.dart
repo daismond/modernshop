@@ -1,7 +1,8 @@
 import "package:flutter/material.dart";
+import "package:flutter_svg/svg.dart";
+import "package:modernshop/pages/HomeManager.dart";
 import "package:modernshop/scoped/Mains.dart";
 import "package:scoped_model/scoped_model.dart";
-import "../Pages/HomePage.dart";
 import "package:shared_preferences/shared_preferences.dart";
 
 // ignore: must_be_immutable
@@ -22,8 +23,8 @@ class PageComposant extends StatelessWidget {
             return Container(
                 height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,
-                decoration:
-                    BoxDecoration(color: Theme.of(context).primaryColor),
+                decoration: BoxDecoration(
+                    color: Theme.of(context).primaryColor.withOpacity(0.9)),
                 child: Stack(
                   children: [
                     Column(
@@ -37,7 +38,7 @@ class PageComposant extends StatelessWidget {
                                 height: MediaQuery.of(context).size.height / 2,
                                 width: MediaQuery.of(context).size.height / 2,
                                 //    color: Theme.of(context).primaryColorDark,
-                                child: Image.asset(
+                                child: SvgPicture.asset(
                                   image,
                                 )),
                           ),
@@ -85,12 +86,12 @@ class PageComposant extends StatelessWidget {
                                   SharedPreferences prefs =
                                       await SharedPreferences.getInstance();
                                   prefs.setBool("description", true);
-                                  //  model.fetchlivres();
+                                  model.fetchCategories();
+                                  model.fetchProducts();
+                                  model.fetchProductsOfCategory("smartphones");
                                   Navigator.pushReplacement(context,
                                       MaterialPageRoute(builder: (context) {
-                                    return HomePage(
-                                      model: model,
-                                    );
+                                    return HomeManager();
                                   }));
                                 },
                                 child: Text(
@@ -115,11 +116,12 @@ class PageComposant extends StatelessWidget {
                               SharedPreferences prefs =
                                   await SharedPreferences.getInstance();
                               prefs.setBool("description", true);
+                              model.fetchCategories();
+                              model.fetchProducts();
+                              model.fetchProductsOfCategory("smartphones");
                               Navigator.pushReplacement(context,
                                   MaterialPageRoute(builder: (context) {
-                                return HomePage(
-                                  model: model,
-                                );
+                                return HomeManager();
                               }));
                             },
                             icon: Icon(

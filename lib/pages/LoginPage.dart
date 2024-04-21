@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:modernshop/pages/HomeManager.dart';
 import 'package:modernshop/pages/SplashPage.dart';
 import 'package:modernshop/scoped/Mains.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -19,15 +17,29 @@ class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
 
   // Méthode pour la connexion
-  Future<void> signInWithEmailPassword(BuildContext context, String email,
+  Future signInWithEmailPassword(BuildContext context, String email,
       String password, mainsScoped model) async {
     if (!_formKey.currentState!.validate()) {
+      print("cest pas  verifier");
       return;
+    } else {
+      setState(() {
+        _isLoading = true;
+      });
+      print("cest verifier");
+      model.CreateUser(email, password).then((value) {
+        if (value == true) {
+          Navigator.pushReplacement(context, MaterialPageRoute(
+            builder: (context) {
+              return SplashPage();
+            },
+          ));
+        } else {
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text("We encountered an error")));
+        }
+      });
     }
-
-    setState(() {
-      _isLoading = true;
-    });
   }
 
   final TextEditingController emailController = TextEditingController();
@@ -41,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
         builder: (context, child, model) {
           return SingleChildScrollView(
               child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                 Form(
                     key: _formKey,
@@ -51,10 +63,10 @@ class _LoginPageState extends State<LoginPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Container(
-                            height: MediaQuery.of(context).size.height / 3,
+                            height: MediaQuery.of(context).size.height / 3.18,
                             width: MediaQuery.of(context).size.width,
                             decoration: BoxDecoration(
-                              color: Colors.black,
+                              //   color: Colors.black,
                               borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(
                                     MediaQuery.of(context).size.height / 5),
@@ -74,9 +86,13 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                           ),
+                          Center(
+                            child: Text(
+                              "ModernShop",
+                              style: Theme.of(context).textTheme.titleLarge,
+                            ),
+                          ),
                           Container(
-                            margin: EdgeInsets.only(
-                                top: MediaQuery.of(context).size.height / 50),
                             height: afficherregister
                                 ? MediaQuery.of(context).size.height / 2
                                 : MediaQuery.of(context).size.height / 3,
@@ -97,7 +113,7 @@ class _LoginPageState extends State<LoginPage> {
                                   ),
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
-                                      return 'Veuillez saisir votre username';
+                                      return 'Please enter your username';
                                     }
                                     return null;
                                   },
@@ -109,13 +125,13 @@ class _LoginPageState extends State<LoginPage> {
                                       Icons.key,
                                       color: Theme.of(context).primaryColor,
                                     ),
-                                    labelText: 'Mot de passe',
+                                    labelText: 'Password',
                                     border: OutlineInputBorder(gapPadding: 1),
                                   ),
                                   obscureText: true,
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
-                                      return 'Veuillez saisir votre mot de passe';
+                                      return 'Please enter your password';
                                     }
                                     return null;
                                   },
@@ -129,8 +145,7 @@ class _LoginPageState extends State<LoginPage> {
                                             color:
                                                 Theme.of(context).primaryColor,
                                           ),
-                                          labelText:
-                                              'Confirmer le Mot de passe',
+                                          labelText: 'Confirm password',
                                           border:
                                               OutlineInputBorder(gapPadding: 1),
                                         ),
@@ -140,7 +155,7 @@ class _LoginPageState extends State<LoginPage> {
                                               value.isEmpty ||
                                               passwordController2.text !=
                                                   passwordController.text) {
-                                            return 'Veuillez saisir un mot de passe identique';
+                                            return 'Please enter the same password';
                                           }
                                           return null;
                                         },
@@ -165,7 +180,7 @@ class _LoginPageState extends State<LoginPage> {
                                                 color: Colors.white,
                                               )
                                             : Text(
-                                                'Créer un compte',
+                                                'Create an account',
                                                 style: TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                   color: Colors.white,
@@ -203,7 +218,7 @@ class _LoginPageState extends State<LoginPage> {
                                               ScaffoldMessenger.of(context)
                                                   .showSnackBar(SnackBar(
                                                       content: Text(
-                                                          "Connexion échouée")));
+                                                          "Failed connection")));
                                             }
                                           });
                                         },
@@ -222,7 +237,8 @@ class _LoginPageState extends State<LoginPage> {
                               ],
                             ),
                           ),
-                          Container(
+                          AnimatedContainer(
+                            duration: Duration(milliseconds: 300),
                             height: afficherregister
                                 ? MediaQuery.of(context).size.height / 8
                                 : MediaQuery.of(context).size.height / 4,
@@ -240,7 +256,7 @@ class _LoginPageState extends State<LoginPage> {
                               child: Container(
                                 width: MediaQuery.of(context).size.width / 2,
                                 child: afficherregister
-                                    ? ElevatedButton.icon(
+                                    ? ElevatedButton(
                                         style: ButtonStyle(
                                           backgroundColor:
                                               MaterialStateProperty.all(
@@ -251,19 +267,15 @@ class _LoginPageState extends State<LoginPage> {
                                             afficherregister = false;
                                           });
                                         },
-                                        icon: Icon(
-                                          Icons.login,
-                                          color: Colors.white,
-                                        ),
-                                        label: Text(
-                                          "Se connecter",
+                                        child: Text(
+                                          "Log in",
                                           style: TextStyle(
                                             color: Colors.black,
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
                                       )
-                                    : ElevatedButton.icon(
+                                    : ElevatedButton(
                                         style: ButtonStyle(
                                           backgroundColor:
                                               MaterialStateProperty.all(
@@ -274,12 +286,8 @@ class _LoginPageState extends State<LoginPage> {
                                             afficherregister = true;
                                           });
                                         },
-                                        icon: Icon(
-                                          Icons.person_add,
-                                          color: Colors.white,
-                                        ),
-                                        label: Text(
-                                          "Creer un compte",
+                                        child: Text(
+                                          "Create an account",
                                           style: TextStyle(
                                             color: Colors.black,
                                             fontWeight: FontWeight.bold,

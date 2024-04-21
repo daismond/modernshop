@@ -10,20 +10,20 @@ class SplashPage extends StatefulWidget {
 
 List<Widget> pages = [
   PageComposant(
-      "Un Shopping Moderne",
-      "Plongez vous dans un nouvel univers d'achat et de découverte ultime",
+      "Modern Shopping",
+      "Immerse yourself in a new world of ultimate shopping and discovery",
       false,
-      "assets/images/shopping.png"),
+      "assets/images/photo1.svg"),
   PageComposant(
-      "Sauvegarde continue des commandes",
-      "Tous vos commandes sont enregistrées et sauvegardées automatiquement",
+      "Continuous order backup",
+      "All your orders are recorded and saved automatically",
       false,
-      "assets/images/briefing.svg"),
+      "assets/images/photo2.svg"),
   PageComposant(
-      "Payement sécurisé",
-      "Nous vous accompagnons de la commande jusqu'au payement en toute sécurité.",
+      "Secure payment",
+      "We support you from ordering to secure payment.",
       true,
-      "assets/images/note-crayon.svg"),
+      "assets/images/photo3.svg"),
 ];
 
 class _SplashPageState extends State<SplashPage> {

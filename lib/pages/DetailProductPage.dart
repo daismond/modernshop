@@ -1,6 +1,9 @@
 import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
+import "package:modernshop/scoped/Mains.dart";
+import "package:scoped_model/scoped_model.dart";
 
+// ignore: must_be_immutable
 class DetailProductPage extends StatefulWidget {
   var produit;
   DetailProductPage({Key? key, required this.produit}) : super(key: key);
@@ -25,14 +28,10 @@ class _DetailProductPageState extends State<DetailProductPage> {
                 fontWeight: FontWeight.bold),
           ),
           actions: [
-            IconButton.filled(
-                style: ButtonStyle(
-                    backgroundColor: MaterialStatePropertyAll(Colors.black)),
-                onPressed: () {},
-                icon: Icon(
-                  Icons.favorite_border_outlined,
-                  color: Colors.white,
-                ))
+            CircleAvatar(
+              backgroundColor: Colors.transparent,
+              child: Image(image: AssetImage("assets/images/logo.png")),
+            ),
           ],
         ),
         body: Container(
@@ -214,39 +213,44 @@ class _DetailProductPageState extends State<DetailProductPage> {
                       color: Colors.grey[500], fontSize: largeur / 30),
                 ),
               ),
-              InkWell(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: Container(
-                  margin: EdgeInsets.symmetric(vertical: hauteur / 100),
-                  padding: EdgeInsets.all(hauteur / 100),
-                  height: hauteur / 13,
-                  width: largeur,
-                  decoration: BoxDecoration(
-                      color: Theme.of(context).primaryColor,
-                      borderRadius:
-                          BorderRadius.all(Radius.circular(hauteur / 50))),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text(
-                        "Ajouter au panier",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: hauteur / 45),
+              ScopedModelDescendant<mainsScoped>(
+                builder: (context, child, model) {
+                  return InkWell(
+                    onTap: () {
+                      model.addproductpanier(widget.produit);
+                      Navigator.pop(context);
+                    },
+                    child: Container(
+                      margin: EdgeInsets.symmetric(vertical: hauteur / 100),
+                      padding: EdgeInsets.all(hauteur / 100),
+                      height: hauteur / 13,
+                      width: largeur,
+                      decoration: BoxDecoration(
+                          color: Theme.of(context).primaryColor,
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(hauteur / 50))),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Text(
+                            "Ajouter au panier",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: hauteur / 45),
+                          ),
+                          Text(
+                            widget.produit["price"].toString() + " €",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: hauteur / 45),
+                          )
+                        ],
                       ),
-                      Text(
-                        widget.produit["price"].toString() + " €",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: hauteur / 45),
-                      )
-                    ],
-                  ),
-                ),
+                    ),
+                  );
+                },
               )
             ],
           ),

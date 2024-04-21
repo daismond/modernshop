@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:modernshop/pages/LoadingPage.dart';
-import 'package:modernshop/pages/SplashPage.dart';
 import 'package:modernshop/scoped/Mains.dart';
 import 'package:scoped_model/scoped_model.dart';
 
@@ -38,6 +37,8 @@ class MyApp extends StatelessWidget {
                     bodyMedium: TextStyle(
                         fontSize: MediaQuery.of(context).size.width / 25,
                         fontWeight: FontWeight.normal))),
-            home: SplashPage()));
+            home: LoadingPage(
+              mains: mains,
+            )));
   }
 }

@@ -20,7 +20,17 @@ class _UserPageState extends State<UserPage> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          leading: CircleAvatar(
+            backgroundColor: Colors.transparent,
+            child: Image(image: AssetImage("assets/images/logo.png")),
+          ),
+          centerTitle: true,
+          title: Text(
+            "User",
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
+        ),
         body: ScopedModelDescendant<mainsScoped>(
           builder: (context, child, model) {
             return Container(
@@ -114,7 +124,7 @@ class _UserPageState extends State<UserPage> {
                     ),
                   ),
                   Container(
-                    height: MediaQuery.of(context).size.height / 7,
+                    height: MediaQuery.of(context).size.height / 12,
                     width: MediaQuery.of(context).size.width,
                     margin: EdgeInsets.all(
                       MediaQuery.of(context).size.height / 100,
@@ -127,27 +137,20 @@ class _UserPageState extends State<UserPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         ListTile(
-                          leading: Icon(
-                            Icons.policy,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          title: Text("Politique de confidentialite"),
-                        ),
-                        ListTile(
                           onTap: () async {
                             showDialog(
                               context: context,
                               builder: (context) {
                                 return AlertDialog(
-                                  title: Text("Déconnexion"),
-                                  content: Text(
-                                      "Etes vous sures de vouloir vous déconnecter ?"),
+                                  title: Text("Log Out"),
+                                  content:
+                                      Text("Are you sure you want to log out?"),
                                   actions: [
                                     TextButton(
                                         onPressed: () {
                                           Navigator.pop(context);
                                         },
-                                        child: Text("Annuler")),
+                                        child: Text("Cancel")),
                                     TextButton(
                                         onPressed: () async {
                                           SharedPreferences prefs =
@@ -162,7 +165,7 @@ class _UserPageState extends State<UserPage> {
                                           ));
                                         },
                                         child: Text(
-                                          "Se déconnecter",
+                                          "Log out",
                                           style: TextStyle(
                                               color: Colors.red,
                                               fontWeight: FontWeight.bold),
@@ -176,7 +179,7 @@ class _UserPageState extends State<UserPage> {
                             Icons.exit_to_app,
                             color: Theme.of(context).primaryColor,
                           ),
-                          title: Text("Se deconnecter"),
+                          title: Text("Log Out"),
                         ),
                       ],
                     ),

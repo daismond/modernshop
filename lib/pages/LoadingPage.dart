@@ -19,6 +19,7 @@ class _LoadingPageState extends State<LoadingPage> {
     super.initState();
     widget.mains.fetchCategories();
     widget.mains.fetchProducts();
+    // widget.mains.deleteCart();
 
     widget.mains.fetchProductsOfCategory("smartphones");
 
@@ -26,7 +27,7 @@ class _LoadingPageState extends State<LoadingPage> {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       if (prefs.getString("user") != null) {
         widget.mains.setuser(prefs.getString("user").toString());
-        widget.mains.fetchpanier();
+        //  widget.mains.fetchpanier();
         Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) {
           return HomeManager();
@@ -47,14 +48,24 @@ class _LoadingPageState extends State<LoadingPage> {
             //ajout de l'image
             ),
         child: Center(
-          child: Container(
-            height: MediaQuery.of(context).size.height / 5,
-            width: MediaQuery.of(context).size.height / 5,
-            decoration: const BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage(
-              "assets/images/logo.png",
-            ))),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                height: MediaQuery.of(context).size.height / 5,
+                width: MediaQuery.of(context).size.height / 5,
+                decoration: const BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage(
+                  "assets/images/logo.png",
+                ))),
+              ),
+              Text(
+                "ModernShop",
+                style: Theme.of(context).textTheme.titleLarge,
+              )
+            ],
           ),
         ),
       ),
