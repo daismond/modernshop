@@ -1,15 +1,13 @@
 
-![Logo](https://github.com/daismond/modernshop/blob/main/assets/images/logo.png?raw=true)
+# ModernShop
+
+Application mobile de E-Commerce avec un model dark et fonctionnant avec API REST de dummy.com
 
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-
-
-# Project Title
-
-Application mobile de E-Commerce avec un model dark et fonctionnant avec API REST de dummy.com
+![App Screenshot](https://github.com/daismond/modernshop/blob/main/screenshoot/home.png?raw=true)
+![App Screenshot](https://github.com/daismond/modernshop/blob/main/screenshoot/detail.png?raw=true)
 
 ## Color Reference
 
