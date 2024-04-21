@@ -1,7 +1,7 @@
 
 # ModernShop
 
-Application mobile de E-Commerce avec un model dark et fonctionnant avec API REST de dummy.com
+E-Commerce mobile application with a dark model and working with REST API from dummy.com
 
 
 ## Screenshots
@@ -19,9 +19,9 @@ Application mobile de E-Commerce avec un model dark et fonctionnant avec API RES
 
 ## Tech Stack
 
-**Client:** React, Redux, TailwindCSS
+**Front End:** Flutter, Dart
 
-**Server:** Node, Express
+**Backend:** Api Rest dummy.com
 
 
 ## Deployment
@@ -31,24 +31,25 @@ To deploy this project run
 ```bash
   git clone https://github.com/daismond/modernshop.git
 ```
-Accédez au répertoire du projet 
+Go to the project directory
 ```bash
   cd modernshop
 ```
-Assurez-vous que toutes les dépendances sont installées en exécutant la commande suivante
+Make sure all dependencies are installed by running the following command
 ```bash
   flutter pub get
 ```
-Pour déployer l'application sur un appareil ou un émulateur, utilisez la commande suivante 
+To deploy the app to a device or emulator, use the following command 
 ```bash
   flutter run
 ```
-Cela lancera l'application sur votre appareil ou émulateur connecté.
-Si vous souhaitez générer un fichier APK pour le déploiement sur des appareils Android, utilisez la commande suivante :
+This will launch the app on your connected device or emulator.
+
+If you want to generate an APK file for deployment on Android devices, use the following command:
 ```bash
   flutter build apk --release
 ```
-Cela générera un fichier APK dans le répertoire build/app/outputs/flutter-apk/.
+This will generate an APK file in the build/app/outputs/flutter-apk/ directory.
 ## Features
 
 - Oline Command
