@@ -1,17 +1,84 @@
-# modernshop
 
-A new Flutter project.
+![Logo](https://github.com/daismond/modernshop/blob/main/assets/images/logo.png?raw=true)
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## Screenshots
 
-A few resources to get you started if this is your first Flutter project:
+![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-"# modernshop" 
+# Project Title
+
+Application mobile de E-Commerce avec un model dark et fonctionnant avec API REST de dummy.com
+
+## Color Reference
+
+| Color             | Hex                                                                |
+| ----------------- | ------------------------------------------------------------------ |
+| Example Color | ![#0a192f](https://via.placeholder.com/10/0a192f?text=+) #0a192f |
+
+
+## Tech Stack
+
+**Client:** React, Redux, TailwindCSS
+
+**Server:** Node, Express
+
+
+## Deployment
+
+To deploy this project run
+
+```bash
+  git clone <lien-du-referentiel>
+```
+Accédez au répertoire du projet 
+```bash
+  cd <nom-du-projet>
+```
+Assurez-vous que toutes les dépendances sont installées en exécutant la commande suivante
+```bash
+  flutter pub get
+```
+Pour déployer l'application sur un appareil ou un émulateur, utilisez la commande suivante 
+```bash
+  flutter run
+```
+Cela lancera l'application sur votre appareil ou émulateur connecté.
+Si vous souhaitez générer un fichier APK pour le déploiement sur des appareils Android, utilisez la commande suivante :
+```bash
+  flutter build apk --release
+```
+Cela générera un fichier APK dans le répertoire build/app/outputs/flutter-apk/.
+## Features
+
+- Oline Command
+- Live previews
+- Fullscreen mode
+- Cross platform
+- Beautiful design
+
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
+
+## Badges
+
+Add badges from somewhere like: [shields.io](https://shields.io/)
+
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
+[![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)
+
+
+## Authors
+
+- [@daismond](https://www.github.com/daismond)
+
+
+## Support
+
+For support, email ekoumxavier111@gmail.com or join our Slack channel.
+
