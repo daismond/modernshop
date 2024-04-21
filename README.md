@@ -6,11 +6,13 @@ E-Commerce mobile application with a dark model and working with REST API from d
 
 ## Screenshots
 
+![App Screenshot](https://github.com/daismond/modernshop/blob/main/screenshoot/loading.png?raw=true)
 ![App Screenshot](https://github.com/daismond/modernshop/blob/main/screenshoot/home.png?raw=true)
 ![App Screenshot](https://github.com/daismond/modernshop/blob/main/screenshoot/detail.png?raw=true)
 ![App Screenshot](https://github.com/daismond/modernshop/blob/main/screenshoot/login.png?raw=true)
+![App Screenshot](https://github.com/daismond/modernshop/blob/main/screenshoot/signing.png?raw=true)
 ![App Screenshot](https://github.com/daismond/modernshop/blob/main/screenshoot/orders.png?raw=true)
-![App Screenshot](https://github.com/daismond/modernshop/blob/main/screenshoot/signing.png?raw=true)## Color Reference
+## Color Reference
 
 | Color             | Hex                                                                |
 | ----------------- | ------------------------------------------------------------------ |
