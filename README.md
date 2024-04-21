@@ -8,8 +8,9 @@ Application mobile de E-Commerce avec un model dark et fonctionnant avec API RES
 
 ![App Screenshot](https://github.com/daismond/modernshop/blob/main/screenshoot/home.png?raw=true)
 ![App Screenshot](https://github.com/daismond/modernshop/blob/main/screenshoot/detail.png?raw=true)
-
-## Color Reference
+![App Screenshot](https://github.com/daismond/modernshop/blob/main/screenshoot/login.png?raw=true)
+![App Screenshot](https://github.com/daismond/modernshop/blob/main/screenshoot/orders.png?raw=true)
+![App Screenshot](https://github.com/daismond/modernshop/blob/main/screenshoot/signing.png?raw=true)## Color Reference
 
 | Color             | Hex                                                                |
 | ----------------- | ------------------------------------------------------------------ |
@@ -28,11 +29,11 @@ Application mobile de E-Commerce avec un model dark et fonctionnant avec API RES
 To deploy this project run
 
 ```bash
-  git clone <lien-du-referentiel>
+  git clone https://github.com/daismond/modernshop.git
 ```
 Accédez au répertoire du projet 
 ```bash
-  cd <nom-du-projet>
+  cd modernshop
 ```
 Assurez-vous que toutes les dépendances sont installées en exécutant la commande suivante
 ```bash
